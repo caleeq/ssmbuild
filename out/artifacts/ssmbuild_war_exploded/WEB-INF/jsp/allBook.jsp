@@ -10,62 +10,76 @@
 <html>
 <head>
     <title>All Books</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-<div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <div class="page-header">
-                <h1>All Books Here</h1>
+<section class="section">
+    <div class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">All Books Here</h1>
+                <h2 class="subTitle">Reading thinking working and living</h2>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-8 column">
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddBook">Add Book</a>
+    <div class="level">
+        <div class="level-item">
+            <a class="button" href="${pageContext.request.contextPath}/book/toAddBook">Add Book</a>
         </div>
-        <div class="col-md-4 column">
-            <form action="${pageContext.request.contextPath}/book/queryBook" method="post" class="form-inline">
-                <input type="text" name="queryBookName" class="form-control" placeholder="Input Book Name">
-                <input type="submit" class="btn btn-primary" value="Search">
+        <div class="level-item">
+            <form action="${pageContext.request.contextPath}/book/queryBook" method="post" class="">
+                <div class="field has-addons">
+                    <p class="control">
+                        <input type="text" name="queryBookName" class="input" placeholder="Input Book Name">
+                    </p>
+                    <p class="control">
+                        <button type="submit" class="button">Search</button>
+                    </p>
+                </div>
             </form>
         </div>
     </div>
 
-    <div class="row clearfix">
-        <div style="text-align: center; font-size: 30px; color: red">
-            <span>${error}</span>
-        </div>
-        <div class="col-md-12 column">
-            <table class="table table-hover table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>NAME</th>
-                    <th>COUNTS</th>
-                    <th>DETAIL</th>
-                    <th>OPERATION</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="book" items="${list}">
+    <div class="level">
+        <div class="level-item">
+            <div class="column is-two-thirds">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
                     <tr>
-                        <td>${book.bookID}</td>
-                        <td>${book.bookName}</td>
-                        <td>${book.bookCounts}</td>
-                        <td>${book.detail}</td>
-                        <td><a href="${pageContext.request.contextPath}/book/toUpdate/${book.bookID}">Update</a>&nbsp;|&nbsp;<a
-                                href="${pageContext.request.contextPath}/book/deleteBook/${book.bookID}">Delete</a></td>
+                        <th>#</th>
+                        <th>NAME</th>
+                        <th>COUNTS</th>
+                        <th>DETAIL</th>
+                        <th>OPERATION</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="book" items="${list}">
+                        <tr>
+                            <td>${book.bookID}</td>
+                            <td>${book.bookName}</td>
+                            <td>${book.bookCounts}</td>
+                            <td>${book.detail}</td>
+                            <td><a class="tag is-info"
+                                   href="${pageContext.request.contextPath}/book/toUpdate/${book.bookID}">Update</a>&nbsp;|&nbsp;
+                                <span class="tag is-warning">Delete
+                                <a class="delete"
+                                   href="javascript:if(confirm('Confirm to delete?'))location='${pageContext.request.contextPath}/book/deleteBook/${book.bookID}'"></a>
+                            </span>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
+    <div class="level">
+        <div class="level-item">
+            <span class="title is-4 is-danger">${error}</span>
+        </div>
+    </div>
+</section>
 </body>
 </html>

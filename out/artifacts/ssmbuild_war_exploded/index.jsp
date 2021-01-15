@@ -7,29 +7,24 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>Welcome</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      a{
-        text-decoration: none;
-        color: black;
-        font-size: 18px;
-      }
-      h3{
-        width: 180px;
-        height: 38px;
-        margin: 100px  auto;
-        text-align: center;
-        line-height: 38px;
-        background: deepskyblue;
-        border-radius: 5px;
-      }
-    </style>
-  </head>
-  <body>
-<h3>
-  <a href="${pageContext.request.contextPath}/book/allBook">Show all books</a>
-</h3>
-  </body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="level">
+                    <div class="level-item">
+                        <a class="button is-primary is-large" href="${pageContext.request.contextPath}/book/allBook">Show all
+                            books</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
 </html>

@@ -9,39 +9,53 @@
 <html>
 <head>
     <title>Add Book</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-<div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <div class="page-header">
+<section class="section">
+    <div class="level">
+        <div class="level-item">
+            <div class="title">
                 <h1>
-                    <small>add book</small>
+                    Add book
                 </h1>
             </div>
         </div>
     </div>
-
-    <form action="${pageContext.request.contextPath}/book/addBook" method="post">
-        <div class="form-group">
-            <label for="bkname">Book Name:</label>
-            <input type="text" name="bookName" class="form-control" id="bkname" required/>
+    <div class="level">
+        <div class="level-item">
+            <form action="${pageContext.request.contextPath}/book/addBook" method="post" class="field">
+                <div class="field">
+                    <div class="content">
+                        <label for="bkname" class="label">Book Name:</label>
+                        <div class="control">
+                            <input type="text" name="bookName" class="input" id="bkname" required/>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <label for="bkcount" class="label">Book Count:</label>
+                        <div class="control">
+                            <input type="text" name="bookCounts" class="input" id="bkcount" required/>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <label for="bkdetail" class="label">Book Detail:</label>
+                        <div class="control">
+                            <input type="text" name="detail" class="input" id="bkdetail" required/>
+                        </div>
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <input type="submit" class="button is-link" value="Add">
+                        </div>
+                        <div class="control">
+                            <a class="button is-link is-light" href="${pageContext.request.contextPath}/book/allBook">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="bkcount">Book Count:</label>
-            <input type="text" name="bookCounts" class="form-control" id="bkcount" required/>
-        </div>
-        <div class="form-group">
-            <label for="bkdetail">Book Detail:</label>
-            <input type="text" name="detail" class="form-control" id="bkdetail" required/>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="form-control" value="Add">
-        </div>
-    </form>
-
-
-</div>
+    </div>
+</section>
 </body>
 </html>
